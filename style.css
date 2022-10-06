@@ -1,0 +1,172 @@
+:root {
+    --grayishBlue: hsl(237, 18%, 59%);
+    --softRed: hsl(345, 95%, 68%);
+    --white: hsl(0, 0%, 100%);
+    --darkDesaturatedBlue: hsl(236, 21%, 26%);
+    --veryDarkBlue: hsl(235, 16%, 14%);
+    --black: hsl(234, 17%, 12%);
+}
+
+body {
+    height: 100vh;
+    padding-inline: 10vw;
+    background-image: linear-gradient(to bottom, var(--veryDarkBlue), var(--darkDesaturatedBlue));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-pattern-hills {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: -1;
+}
+
+.bg-stars {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+
+main {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    translate: -50% -70%;
+}
+
+h1 {
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    letter-spacing: 10px;
+    line-height: 1.2;
+    font-size: clamp(1.3rem, 1.1vw + 1.1rem, 2rem);
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 8.2rem);
+    gap: min(5vw, 2rem);
+}
+
+@media (width<=768px) {
+    .tiles {
+        grid-template-columns: repeat(4, 5rem);
+    }
+}
+
+@media (width<=395px) {
+    .tiles {
+        grid-template-columns: repeat(2, 5rem);
+        place-content: center;
+    }
+}
+
+.tile__container p {
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    color: var(--grayishBlue);
+    font-size: clamp(0.65rem, 0.5vw + 0.5rem, 1rem);
+}
+
+.tile {
+    position: relative;
+    color: var(--softRed);
+    font-size: clamp(2.5rem, 4.5vw + 0.9rem, 5rem);
+    background-color: var(--darkDesaturatedBlue);
+    border-radius: 0.4rem;
+    aspect-ratio: 1/1;
+}
+
+.tile::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background-color: var(--black);
+    z-index: -1;
+    translate: 0 6%;
+    border-radius: inherit;
+}
+
+.tile__inner {
+    border-radius: inherit;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tile__inner::before,
+.tile__inner::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    background-color: var(--black);
+    z-index: 2;
+    border-radius: 100%;
+    translate: 0 -50%;
+}
+
+.tile__inner::before {
+    left: -7px;
+}
+
+.tile__inner::after {
+    right: -7px;
+
+}
+
+.tile span {
+    position: relative;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: inherit;
+    height: 100%;
+}
+
+.tile span::before {
+    content: '';
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    inset: 0 0 auto;
+    background-color: var(--veryDarkBlue);
+    opacity: 0.75;
+    z-index: -1;
+}
+
+.tile span::after {
+    content: '';
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    inset: auto 0 0;
+    background-color: var(--darkDesaturatedBlue);
+    z-index: -1;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    translate: -50% 0;
+}
+
+.social-icons ion-icon {
+    color: var(--grayishBlue);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.social-icons ion-icon:hover {
+    color: var(--softRed);
+}
